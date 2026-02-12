@@ -9,7 +9,7 @@ const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
 const music = document.getElementById("bg-music");
-music.volume = 0.3; 
+music.volume = 0.6; 
 
 envelope.addEventListener("click", () => {
     music.play().catch(err => console.log("Music blocked:", err));
@@ -42,3 +42,4 @@ yesBtn.addEventListener("click", () => {
     buttons.style.display = "none";
     finalText.style.display = "block";
 });
+
