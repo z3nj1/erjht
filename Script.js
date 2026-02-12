@@ -1,4 +1,3 @@
-// Elements
 const envelope = document.getElementById("envelope-container");
 const letter = document.getElementById("letter-container");
 const noBtn = document.querySelector(".no-btn");
@@ -9,24 +8,12 @@ const dogImg = document.getElementById("letter-dog");
 const buttons = document.getElementById("letter-buttons");
 const finalText = document.getElementById("final-text");
 
-// BACKGROUND MUSIC
 const music = document.getElementById("bg-music");
-music.volume = 0.3; // adjust volume
+music.volume = 0.3; 
 
-// Autoplay on page load (mobile may block until first interaction)
-window.addEventListener("load", () => {
-    music.play().catch(err => {
-        console.log("Autoplay blocked, will start on first tap.", err);
-    });
-});
-
-// Failsafe: play after first tap anywhere
-document.body.addEventListener("click", () => {
-    if (music.paused) music.play();
-}, { once: true });
-
-// Click Envelope
 envelope.addEventListener("click", () => {
+    music.play().catch(err => console.log("Music blocked:", err));
+
     envelope.style.display = "none";
     letter.style.display = "flex";
 
@@ -35,9 +22,8 @@ envelope.addEventListener("click", () => {
     }, 50);
 });
 
-// Logic to move the NO button
 noBtn.addEventListener("mouseover", () => {
-    const min = 150;
+    const min = 200;
     const max = 200;
     const distance = Math.random() * (max - min) + min;
     const angle = Math.random() * Math.PI * 2;
@@ -49,12 +35,10 @@ noBtn.addEventListener("mouseover", () => {
     noBtn.style.transform = `translate(${moveX}px, ${moveY}px)`;
 });
 
-// YES is clicked
 yesBtn.addEventListener("click", () => {
-    title.textContent = "!";
+    title.textContent = "Yippeeee!";
     dogImg.src = "dog-happy.png";
     document.querySelector(".letter-window").classList.add("final");
     buttons.style.display = "none";
     finalText.style.display = "block";
 });
-
