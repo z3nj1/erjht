@@ -1,57 +1,57 @@
-/* BODY & BACKGROUND */
 body {
     margin: 0;
-    min-height: 100vh;
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url("heart-bg.png");
-    background-size: cover;
-    background-position: center;
     font-family: "Pixelify Sans", sans-serif;
-
-    /* Default cursor for desktop only */
     cursor: url('icons8-cursor-80.png') 16 16, auto;
 }
 
-/* ENVELOPE */
 #envelope-container {
     text-align: center;
-    padding: 10px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }
 
 #envelope {
-    width: 40vw;        /* responsive size */
-    max-width: 250px;
+    width: 200px;
     animation: pulse 1.5s infinite;
 }
 
-/* LETTER CONTAINER */
 #letter-container {
     display: none;
     position: fixed;
     inset: 0;
     justify-content: center;
     align-items: center;
-    padding: 10px;
 }
 
-/* LETTER WINDOW */
 .letter-window {
-    width: 90vw;
-    max-width: 600px;
-    min-height: 50vh;
+    width: 95vw;
+    max-width: 1000px;
+    min-height: 60vh;
+    aspect-ratio: 4 / 1;
+
     padding: 20px;
-    padding-top: 100px;
+    padding-top: 120px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+
     background-image: url("window.png");
-    background-size: contain;
+    background-size: 100% 100%;
     background-repeat: no-repeat;
     background-position: center;
+
     border-radius: 12px;
     gap: 8px;
 
@@ -65,70 +65,81 @@ body {
     opacity: 1;
 }
 
-/* HEADINGS */
 h1 {
-    font-size: clamp(18px, 6vw, 30px); /* min 18px, max 30px */
-    padding: 10px 15px;
+    display: inline-block;
+    padding: 10px 20px;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
+    font-size: 30px;
     margin: 0;
 }
 
-/* PARAGRAPHS */
 p {
-    font-size: clamp(20px, 5vw, 40px);
+    font-size: 40px;
 }
 
-/* DOG IMAGE */
 .dog {
-    width: 70%;
-    max-width: 300px;
+    width: 300px;
     margin: 10px 0;
     transition: width 0.4s ease;
 }
 
-/* BUTTONS */
+.letter-window.final .dog {
+    width: 300px;
+}
+
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 15px;
+    gap: 30px;
     position: relative;
-    flex-wrap: wrap;
+}
+
+.no-wrapper {
+    position: relative;
 }
 
 .btn {
-    width: 35vw;
-    max-width: 200px;
-    height: auto;
+    width: 120px;
     user-select: none;
 }
 
+.yes-btn,
+.no-btn {
+    width: 250px;
+    height: auto;
+    display: inline-block;
+}
+
+.yes-btn {
+    position: relative;
+    z-index: 2;
+    transform-origin: center center;
+    transition: transform 0.3s ease;
+}
+
+.no-btn {
+    z-index: 1;
+    position: relative;
+    transition: transform 0.15s ease;
+}
+
 .final-text {
-    font-size: clamp(16px, 4.5vw, 22px);
+    font-size: 22px;
     line-height: 1.4;
     text-align: center;
     display: inline-block;
-    padding: 10px 15px;
+    padding: 10px 20px;
     background-color: rgba(255,240,240,0.5);
     border-radius: 12px;
 }
 
-/* HOVER CURSOR FOR DESKTOP */
-@media (hover: hover) and (pointer: fine) {
-    a:hover,
-    button:hover,
-    .btn:hover,
-    #envelope-container:hover,
-    .yes-btn:hover,
-    .no-btn:hover,
-    img:hover {
-        cursor: url('icons8-hand-cursor-80.png') 16 16, pointer;
-    }
-}
-
-/* PULSE ANIMATION */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+a:hover,
+button:hover,
+.btn:hover,
+#envelope-container:hover,
+.yes-btn:hover,
+.no-btn:hover,
+img:hover {
+    cursor: url('icons8-hand-cursor-80.png') 16 16, pointer;
 }
